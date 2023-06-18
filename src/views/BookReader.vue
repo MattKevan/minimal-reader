@@ -46,8 +46,6 @@ export default {
    async loadBook() {
   try {
     const bookData = await localforage.getItem(this.fileName);
-    console.log(bookData);
-    console.log(this.fileName);
     if (bookData) {
       this.book = ePub(bookData); 
 

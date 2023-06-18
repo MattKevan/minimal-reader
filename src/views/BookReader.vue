@@ -77,9 +77,16 @@ export default {
 
           body, p {
             font-family: 'Gentium Book Plus', sans-serif !important;
-            font-size: 20px !important;
+            font-size: 18px !important;
             line-height: 1.6em !important;
             text-align: left !important;
+          }
+          @media (min-width: 768px) {
+            /* Styles for tablets and larger screens */
+            body, p {
+              font-size: 20px !important;
+
+            }
           }
           p, p.indent {
             text-indent: 0em !important;
@@ -111,10 +118,10 @@ export default {
           @media (prefers-color-scheme: dark) {
             body {
               background-color: #000;
-              color: #999 !important;
+              color: #adadad !important;
             }
             body, p, a,h1, h2, h3, h4, h5, h6, ol, ul, li {
-              color: #ccc !important;
+              color: #adadad !important;
             }
             a {
               color: #999 !important;

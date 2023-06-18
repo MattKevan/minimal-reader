@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+body {
+  margin: 0;
+  background-color: #fff;
+  font-family: 'Gentium Book Plus', sans-serif !important;
+  color: #333;
+
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  min-height: 800px;
+
+}
+
+.header {
+    background-color: #f5f5f5;
+    padding: 20px;
+    height: 30px;
+}
+.header p {
+  margin: 0;
+  padding: 0;
+  float: left;
+  font-weight: bold;
+  font-size: 20px;
+}
+.content {
+  padding: 20px;
+}
+#bookCatalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-gap: 1em;
+}
+
+.book-item {
+    position: relative; /* Add this */
+
+  cursor: pointer;
+   display: flex;  /* Make this element a flex container */
+  justify-content: flex-end;  /* Align horizontal items to the end */
+  align-items: flex-end;  /* Align vertical items to the end */
+  flex-direction: column;
+}
+
+.book-cover {
+  width: 100%;
+
+}
+.upload-button {
+      width: 20px;
+  height: 20px;
+    background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+      background-image: url('img/add.svg');
+      float: right;
+      margin-top: 5px;
+
+}
+.menu-button {
+  position: fixed;
+  top: 0;
+  z-index: 998;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+  /* The border and text will still be displayed. If you don't want to display them, use the following properties */
+  border: none;
+  color: transparent;
+    width: 18px;
+  height: 18px;
+  margin: 15px;
+}
+
+.menu-button.back {
+  left: 0;
+    background-image: url('img/grid.svg');
+
+}
+.menu-button.contents {
+  right:0;
+  background-image: url('img/list.svg');
+
+}
+
+#close-sidebar {
+    background-image: url('img/close.svg');
+float: right;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #f5f5f5;
+  /* The border and text will still be displayed. If you don't want to display them, use the following properties */
+  border: none;
+  color: transparent;
+    width: 18px;
+  height: 18px;
+  margin: 0 0 15px 15px;
+  padding: 0;
+
+}
+body.no-scroll {
+  overflow: hidden;
+}
+a {
+  color: #333;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  color: #555;
+}
+#book-title {
+  text-align: center;
+  margin: 15px;
+}
+
+
+.book-cover img:hover {
+  cursor:pointer ;
+}
+#toc-sidebar {
+  position: fixed;
+  width: 400px;
+  height: 100%;
+  background-color: #f5f5f5;
+  padding: 1em;
+  box-sizing: border-box;
+  top:0;
+  right:-500px;
+  z-index: 999;
+  overflow-y: auto;
+  transition: right 0.2s ease-in-out;
+}
+
+#toc-sidebar.open {
+  right: 0;
+}
+#overlay {
+  display: none; /* Initially hidden */
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Translucent black */
+  z-index: 998; /* Below the sidebar but above everything else */
+
+
+}
+
+#viewer.scrolled {
+  overflow: hidden;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  padding: 20px;
+}
+
+#viewer.scrolled .epub-view > iframe {
+    background: white;
+}
+
+#prev {
+  left: 0;
+  position: fixed;
+  top:50%;
+  margin: 20px;
+  z-index: 998;
+   background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* The border and text will still be displayed. If you don't want to display them, use the following properties */
+  border: none;
+  color: transparent;
+  background-color: #fff;
+    width: 20px;
+  height: 20px;
+  background-color: transparent;
+    background-image: url('img/back.svg');
+    cursor: pointer;
+}
+
+#next {
+  right: 0;
+  position: fixed;
+  top:50%;
+  margin: 20px;
+  z-index: 998;
+   background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* The border and text will still be displayed. If you don't want to display them, use the following properties */
+  border: none;
+  color: transparent;
+  background-color: #fff;
+    width: 20px;
+  height: 20px;
+    background-image: url('img/forward.svg');
+    cursor: pointer;
+    background-color: transparent;
+}
+
+#toc {
+  margin: 10px auto;
+}
+
+
+.navlink {
+  position: fixed;
+  top:50%;
+  padding: 20px;
+  z-index: 998;
+
+}
+
+.arrow:hover, .navlink:hover {
+  color: #777;
+}
+
+.arrow:active, .navlink:hover {
+  color: #000;
+}
+
+
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #000;
+    color: #999;
+  }
+  a {
+    color: #999;
+  }
+  .header {
+    background-color: #111;
+  }
+#toc-sidebar {
+  background-color: #222;
+  }
+ a.navlink img {
+  color: #fff;
+ }
+ .menu-button.back {
+  left: 0;
+    background-image: url('img/grid-white.svg');
+    background-color: #000;
+
+}
+.menu-button.contents {
+  background-image: url('img/list-white.svg');
+  background-color: #000;
+
+}
+.upload-button {
+        background-image: url('img/add-white.svg');
+}
+#close-sidebar {
+    background-image: url('img/close-white.svg');
+    background-color: #222;
+  }
+  #next{
+          background-image: url('img/forward-white.svg');
+
+  }
+  #prev {
+    background-image: url('img/back-white.svg');
+  }
+}

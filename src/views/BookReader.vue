@@ -77,7 +77,7 @@ export default {
 
           body, p {
             font-family: 'Gentium Book Plus', sans-serif !important;
-            font-size: 18px !important;
+            font-size: 20px !important;
             line-height: 1.6em !important;
             text-align: left !important;
           }
@@ -114,7 +114,7 @@ export default {
               color: #999 !important;
             }
             body, p, a,h1, h2, h3, h4, h5, h6, ol, ul, li {
-              color: #999 !important;
+              color: #ccc !important;
             }
             a {
               color: #999 !important;

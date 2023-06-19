@@ -76,6 +76,22 @@ body {
   margin: 15px;
 }
 
+.delete-icon {
+    background-size: 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 50%;
+  background-image: url('img/bin.svg');
+  color: transparent;
+      width: 30px;
+  height: 30px;
+    border: none;
+    margin-top: -35px;
+    margin-right: 5px;
+    cursor: pointer;
+}
 .menu-button.back {
   left: 0;
     background-image: url('img/grid.svg');
@@ -250,6 +266,10 @@ a:hover {
     background-image: url('img/grid-white.svg');
     background-color: #000;
 
+}
+.delete-icon {
+  background-image: url('img/bin-white.svg');
+  background-color: #000;
 }
 .menu-button.contents {
   background-image: url('img/list-white.svg');

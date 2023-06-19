@@ -10,8 +10,10 @@ body {
   position: absolute;
   height: 100%;
   width: 100%;
-  min-height: 800px;
-
+ 
+ min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
@@ -26,6 +28,30 @@ body {
   font-weight: bold;
   font-size: 20px;
 }
+.footer {
+  padding: 20px;
+  font-size: 14px;
+  margin-top: auto;
+}
+.footer p {
+  margin: 0;
+}
+.mk-logo {
+  line-height: 1em;
+    display: inline-block;
+    padding: 0;
+    height: 30px;
+    animation: cyc 30s infinite;
+    width: 40px !important;
+    height: 20px !important;
+    margin: -3x 0 0 0;
+}
+  @keyframes cyc {
+    0% { background-color:  #FFFF00; }
+    33% { background-color: #FF00FF; }
+    66% { background-color: #00FFFF; }
+    100% { background-color:#FFFF00; }
+  }
  p.xs {
   font-size: 14px;
  }
@@ -62,6 +88,12 @@ body {
       float: right;
       margin-top: 5px;
 
+}
+.float-right {
+  float: right;
+}
+.float-left {
+  float: left;
 }
 .menu-button {
   position: fixed;

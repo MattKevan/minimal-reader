@@ -6,7 +6,7 @@ body {
   background-color: #fff;
   font-family: 'Gentium Book Plus', sans-serif !important;
   color: #333;
-
+  font-size: 18px;
   position: absolute;
   height: 100%;
   width: 100%;
@@ -26,6 +26,9 @@ body {
   font-weight: bold;
   font-size: 20px;
 }
+ p.xs {
+  font-size: 14px;
+ }
 .content {
   padding: 20px;
 }
@@ -261,6 +264,7 @@ a:hover {
  a.navlink img {
   color: #fff;
  }
+
  .menu-button.back {
   left: 0;
     background-image: url('img/grid-white.svg');

@@ -1,4 +1,8 @@
 <template>
+<div class="drop"
+  @dragover.prevent
+    @drop="uploadBooks">
+
     <div class="header">
       <p>Simple reader</p>
 <div @click="triggerUpload" style="cursor: pointer;" class="upload-button">
@@ -9,6 +13,7 @@
     <div class="content">
     <h1>Library</h1>
 
+      <div v-if="books.length === 0" class="placeholder"><p><strong>Your library is empty.</strong> Add .epub books by dropping them on this window or clicking the plus icon above.</p><p class="xs">Please note: Books are stored locally in your browser's cache, so clearing your browsing data will also remove your books.</p></div>
 
     <div id="bookCatalog" class="book-grid">
       <div 
@@ -18,9 +23,16 @@
         @click="openBook(book.fileName)"
       >
         <img :src="book.coverUrl" alt="Book cover" class="book-cover" />
+          <button @click.stop="deleteBook(book.fileName)" class="delete-icon">
+    Delete
+  </button>
+
       </div>
     </div>
   </div>
+
+</div>
+
 </template>
 
 <script>
@@ -50,7 +62,9 @@ export default {
   },
 
   async uploadBooks(event) {
-    const files = Array.from(event.target.files);
+    event.preventDefault();
+    const files = Array.from(event.dataTransfer ? event.dataTransfer.files : event.target.files);
+
 
     for (let file of files) {
       if (file.type !== "application/epub+zip") {
@@ -95,6 +109,10 @@ export default {
       triggerUpload() {
     document.getElementById('bookInput').click();
   },
+  async deleteBook(fileName) {
+    await localforage.removeItem(fileName);
+    this.books = this.books.filter(book => book.fileName !== fileName);
+  },
   },
 async created() {
   // Load books from local storage
@@ -125,7 +143,8 @@ async created() {
       });
     }
   }
-}
+}  
+
 
 }
 </script>

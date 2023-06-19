@@ -70,7 +70,16 @@ export default {
 
     defineHooks() {
       this.book.rendition.hooks.content.register((contents) => {
+
+      
         let doc = contents.document;
+        var paras = doc.getElementsByTagName('p');
+        for (var i = paras.length - 1; i >= 0; i--) {
+            if (paras[i].innerHTML.replace(/\s|&nbsp;/g, '').length == 0)
+                paras[i].parentNode.removeChild(paras[i]);
+        }
+
+
         let styleEl = doc.createElement("style");
         styleEl.textContent = `
           @import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400;1,700&display=swap');
@@ -93,6 +102,14 @@ export default {
             margin-bottom: 1em !important;
             margin-top: 0 !important;
           }
+          p.list, p.list1, p.listpart, p.list2e {
+            margin-bottom: .5em !important;
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+          }
+          p.list:last, p.list1:last, p.listpart:last {
+            margin-bottom: 0 !important;
+          }
           a {
             color: #333 !important;
             text-decoration: none;
@@ -113,6 +130,28 @@ export default {
             font-family: 'Gentium Book Plus', sans-serif !important;
             font-size: 18px !important;
             line-height: 1.6em !important;
+
+          }
+          span {
+            background-color: transparent !important;
+          }
+          .dropcaps {
+            font-size: 1em;
+            float: none;
+            margin: 0 !important;
+            padding: 0;
+          }
+          .box, .border, .box1 {
+            background-color: transparent !important;
+            border-radius: 0 !important;
+            border: 1px solid #c6c6c6 !important;
+            padding: 1em !important;
+            font-weight: normal !important;
+          }
+          .box h2, .border h2 {
+            margin-top: 0 !important;
+            padding: 0 !important;
+            background-color: transparent !important;
 
           }
           @media (prefers-color-scheme: dark) {

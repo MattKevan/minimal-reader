@@ -19,7 +19,18 @@ body {
 .header {
     background-color: #f5f5f5;
     padding: 20px;
-    height: 30px;
+    height: 20px;
+}
+.logo {
+  width: 23px;
+  height: 20px;
+  margin-right: 10px;
+  margin-top: 1px;
+  float: left;
+   background-size: 20px 23px;
+  background-repeat: no-repeat;
+  background-position: center;
+      background-image: url('img/book.svg');
 }
 .header p {
   margin: 0;
@@ -27,6 +38,7 @@ body {
   float: left;
   font-weight: bold;
   font-size: 20px;
+  line-height: 1em;
 }
 .footer {
   padding: 10px 20px;
@@ -86,7 +98,7 @@ body {
   background-position: center;
       background-image: url('img/add.svg');
       float: right;
-      margin-top: 5px;
+     
 
 }
 .float-right {
@@ -311,6 +323,9 @@ a:hover {
   background-image: url('img/list-white.svg');
   background-color: #000;
 
+}
+.logo {
+  background-image: url('img/book-white.svg');
 }
 .upload-button {
         background-image: url('img/add-white.svg');

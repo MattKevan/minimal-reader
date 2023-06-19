@@ -1,4 +1,4 @@
-# Simple reader
+# Minimal reader
 
 This is a basic web-based epub reader with an emphasis on creating a clean reading experience. 
 

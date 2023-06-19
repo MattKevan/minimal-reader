@@ -13,7 +13,7 @@
     <div class="content">
     <h1>Library</h1>
 
-      <div v-if="books.length === 0" class="placeholder"><p>Your library is currently empty. Add books by dropping them on this window or by clicking the plus icon above.</p><p class="xs">Please note: Books are stored locally in your web browser's cache, so clearing browsing data will also remove your books.</p></div>
+      <div v-if="books.length === 0" class="placeholder"><p>Your library is empty. Add books by dropping them on this window or clicking the plus icon above.</p><p class="xs">Please note: Books are stored locally in your browser's cache, so clearing your browsing data will also remove your books.</p></div>
 
     <div id="bookCatalog" class="book-grid">
       <div 

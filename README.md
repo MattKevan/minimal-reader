@@ -1,11 +1,11 @@
 # Simple reader
 
-This is a (very) basic web-based ebook reader with an emphasis on creating a better reading experience. 
+This is a basic web-based epub reader with an emphasis on creating a good reading experience. 
 
 Todo:
-* Delete books from library
+* ~~Delete books from library/~~
 * Save bookmarks
-
+* Tidy code
 
 ## Project setup
 ```

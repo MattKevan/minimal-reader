@@ -5,7 +5,7 @@
 
     <div class="header">
       <div class="logo"></div>
-      <p>Simple Reader</p>
+      <p>Minimal Reader</p>
 <div @click="triggerUpload" style="cursor: pointer;" class="upload-button">
 <input type="file" @change="uploadBooks" id="bookInput" multiple style="display: none" />
 

@@ -2,6 +2,12 @@
 
 This is a simple browser-based epub reader with an emphasis on creating a clean reading experience. 
 
+## Features
+
+* Reasonable typography – like a reader mode for ebooks.
+* Private – your books and reading history are stored locally in your browser cache.
+* Dark mode
+
 Todo:
 * ~~Add option to delete books from library~~
 * Add option to save bookmarks

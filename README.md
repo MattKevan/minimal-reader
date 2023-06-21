@@ -1,6 +1,6 @@
 # Minimal reader
 
-This is a basic browser-based epub reader with an emphasis on creating a clean reading experience. 
+This is a simple browser-based epub reader with an emphasis on creating a clean reading experience. 
 
 Todo:
 * ~~Add option to delete books from library~~

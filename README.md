@@ -5,13 +5,19 @@ This is a simple browser-based epub reader with an emphasis on creating a clean 
 ## Features
 
 * Reasonable typography – like a reader mode for ebooks.
+* Remembers your last location in the book.
 * Private – your books and reading history are stored locally in your browser cache.
 * Dark mode
+
 
 Todo:
 * ~~Add option to delete books from library~~
 * Add option to save bookmarks
 * Clean up code
+
+Limitations:
+* Only works with DRM-free epubs.
+* Doesn't work well with ebooks where every page is an image.
 
 ## Project setup
 ```

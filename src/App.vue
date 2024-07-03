@@ -1,8 +1,5 @@
 <template>
-  <div id="app">
-    <header>
-      
-    </header>
+  <div id="app" class="min-h-[100vh] flex flex-col">
     <router-view/>
   </div>
 </template>
@@ -16,4 +13,3 @@ export default {
 <style>
 /* add your styles here */
 </style>
-§

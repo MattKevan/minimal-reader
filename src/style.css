@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    #prev {
+        left: 0;
+        position: fixed;
+        top:50%;
+        margin: 20px;
+        z-index: 998;
+         background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        /* The border and text will still be displayed. If you don't want to display them, use the following properties */
+        border: none;
+        color: transparent;
+        background-color: #fff;
+          width: 20px;
+        height: 20px;
+        background-color: transparent;
+          background-image: url('assets/img/back.svg');
+          cursor: pointer;
+    }
+
+    #next {
+        right: 0;
+        position: fixed;
+        top:50%;
+        margin: 20px;
+        z-index: 998;
+         background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        /* The border and text will still be displayed. If you don't want to display them, use the following properties */
+        border: none;
+        color: transparent;
+        background-color: #fff;
+          width: 20px;
+        height: 20px;
+          background-image: url('assets/img/forward.svg');
+          cursor: pointer;
+          background-color: transparent;
+    }
+
+    .menu-button {
+        position: fixed;
+        top: 0;
+        z-index: 998;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: #fff;
+        /* The border and text will still be displayed. If you don't want to display them, use the following properties */
+        border: none;
+        color: transparent;
+          width: 18px;
+        height: 18px;
+        margin: 15px;
+      }
+      .menu-button.back {
+        left: 0;
+          background-image: url('assets/img/grid.svg');
+      
+      }
+      .menu-button.toc {
+        right:0;
+        background-image: url('assets/img/list.svg');
+      
+      }
+      .delete-icon {
+        background-size: 18px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: #fff;
+      background-image: url('assets/img/bin.svg');
+      color: transparent;
+          width: 30px;
+      height: 30px;
+        border: none;
+        cursor: pointer;
+    }
+    #viewer {
+        transition: opacity 0.3s ease;
+      }
+      
+      #viewer.hidden {
+        opacity: 0;
+      }
+      
+      .spinner {
+        /* Add your spinner styles here */
+        /* Example styles */
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        animation: spin 1s linear infinite;
+        margin: 20px auto;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+}

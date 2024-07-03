@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="min-h-[100vh] flex flex-col">
+  <div id="app" class="">
     <router-view/>
   </div>
 </template>

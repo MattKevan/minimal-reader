@@ -94,24 +94,7 @@ export default {
         console.error('Error loading book:', error);
       }
     },
-    handleResize() {
-      this.isResizing = true;
-
-      if (this.resizeTimeout) {
-        clearTimeout(this.resizeTimeout);
-      }
-
-      this.resizeTimeout = setTimeout(() => {
-        this.resizeContent();
-        this.isResizing = false;
-      }, 200); // Adjust the delay as needed
-    },
-
-    resizeContent() {
-      if (this.rendition) {
-        this.rendition.resize();
-      }
-    },
+    
     handleKeydown(event) {
       if (event.key === 'ArrowLeft') {
         this.goPrev(event);

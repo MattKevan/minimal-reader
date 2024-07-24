@@ -7,65 +7,9 @@
     body {
       @apply bg-white dark:bg-black text-black dark:text-gray-200;
     }
-    #prev {
-        left: 0;
-        position: fixed;
-        top:50%;
-        margin: 10px;
-        z-index: 998;
-         background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        /* The border and text will still be displayed. If you don't want to display them, use the following properties */
-        border: none;
-        color: transparent;
-        background-color: #fff;
-          width: 20px;
-        height: 20px;
-        background-color: transparent;
-          cursor: pointer;
-    }
 
-    #next {
-        right: 0;
-        position: fixed;
-        top:50%;
-        margin: 10px;
-        z-index: 998;
-         background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        /* The border and text will still be displayed. If you don't want to display them, use the following properties */
-        border: none;
-        color: transparent;
-        background-color: #fff;
-          width: 20px;
-        height: 20px;
-          cursor: pointer;
-          background-color: transparent;
-    }
 
-    .menu-button {
-        position: fixed;
-        top: 0;
-        z-index: 998;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        /* The border and text will still be displayed. If you don't want to display them, use the following properties */
-        border: none;
-        color: transparent;
-          width: 18px;
-        height: 18px;
-        margin: 15px;
-      }
-      .menu-button.back {
-        left: 0;      
-      }
-      .menu-button.toc {
-        right:0;
-      
-      }
+
       .delete-icon {
         background-size: 18px;
       background-repeat: no-repeat;

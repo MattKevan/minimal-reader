@@ -1,20 +1,37 @@
 <template>
+    <header class=" sticky top-0 z-[3000] w-full bg-white/90  backdrop-blur-md text-sm py-5   dark:bg-black/90">
+    <nav class="flex items-center justify-between px-5" aria-label="Global">
+      <div class="flex items-center gap-4">
+
+        <button @click="goHome" class="bg-[url('assets/img/grid.svg')] dark:bg-[url('assets/img/grid-white.svg')] bg-no-repeat text-transparent w-[20px] h-[20px]">Home</button>
+        <div id="book-title" class="font-bold text-lg"></div>
+
+      </div>
+      <button class="toc bg-[url('assets/img/list.svg')] dark:bg-[url('assets/img/list-white.svg')] bg-no-repeat text-transparent w-[20px] h-[20px]" data-hs-overlay="#hs-overlay-right"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
+</svg>
+</button>    
+
+    </nav>
+
+  </header>
+
   <div class="">
     <div class="">
-      <button @click="goHome" class="menu-button back bg-[url('assets/img/grid.svg')] dark:bg-[url('assets/img/grid-white.svg')]">Home</button>
-      <button class="menu-button toc bg-[url('assets/img/list.svg')] dark:bg-[url('assets/img/list-white.svg')]" data-hs-overlay="#hs-overlay-right">Contents</button>    
     </div>
 
-    <div id="book-title" class="font-bold text-center py-4"></div>
     <div id="viewer" class="scrolled max-w-4xl ml-auto mr-auto mb-20"  :class="{ 'hidden': isResizing }"></div>
-
-    <div class="">
-      <button id="prev" @click="goPrev" class="bg-[url('assets/img/back.svg')] dark:bg-[url('assets/img/back-white.svg')]">Previous</button>
-      <button id="next" @click="goNext" class="bg-[url('assets/img/forward.svg')] dark:bg-[url('assets/img/forward-white.svg')]">Next</button>
+    <div @click="goPrev" class="text-transparent fixed top-0 left-0 h-screen w-12 bg-transparent shadow-lg flex flex-col hover:cursor-pointer bg-[url('assets/img/back.svg')] dark:bg-[url('assets/img/back-white.svg')] bg-no-repeat bg-center">
+      Prev
     </div>
+
+    <div @click="goNext" class="text-transparent fixed top-0 right-0 h-screen w-12 bg-transparent shadow-lg flex flex-col hover:cursor-pointer bg-[url('assets/img/forward.svg')] dark:bg-[url('assets/img/forward-white.svg')] bg-no-repeat bg-center">
+      Next
+    </div>
+ 
 
 </div>
-    <div id="hs-overlay-right" class="hs-overlay hs-overlay-open:translate-x-0 hidden translate-x-full fixed top-0 end-0 transition-all duration-300 transform h-full max-w-xs w-full z-[2800] bg-white border-s dark:bg-neutral-800 dark:border-neutral-700" tabindex="-1">
+    <div id="hs-overlay-right" class="hs-overlay hs-overlay-open:translate-x-0 hidden translate-x-full fixed top-0 end-0 transition-all duration-300 transform h-full max-w-xs w-full z-[4800] bg-white border-s dark:bg-neutral-800 dark:border-neutral-700" tabindex="-1">
       <div class="flex justify-between items-center py-3 px-4 border-b dark:border-neutral-700">
         <h3 class="font-bold text-gray-800 dark:text-white">
           Contents
@@ -202,10 +219,10 @@ export default {
           line-height: 180%;}
         .prose p { margin-bottom: 1em; }
         .prose h1, .prose h2, .prose h3, .prose h4 { margin-top: 1.5em; margin-bottom: 0.5em; font-weight: 700; }
-        .prose h1 { font-size: 2.5em; line-height: 120%; }
-        .prose h2 { font-size: 1.75em; line-height: 120%;}
-        .prose h3 { font-size: 1.5em; line-height: 120%;}
-        .prose h4 { font-size: 1.25em; line-height: 120%;}
+        .prose h1 { font-size: 2.25em; line-height: 120%; }
+        .prose h2 { font-size: 1.5em; line-height: 120%;}
+        .prose h3 { font-size: 1.25em; line-height: 120%;}
+        .prose h4 { font-size: 1.2em; line-height: 120%;}
         .prose strong {font-weight: 700; }
         .prose a { color: #333; text-decoration: none; }
         .prose ul, .prose ol { margin-top: 1em; margin-bottom: 1em; padding-left: 1.5em; }

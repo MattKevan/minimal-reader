@@ -13,7 +13,7 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/book/:fileName',
+    path: '/book/:fileName?',
     name: 'BookReader',
     component: BookReader,
     props: true

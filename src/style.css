@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer components {
+
+    body {
+      @apply bg-white dark:bg-black text-black dark:text-gray-300;
+    }
     #prev {
         left: 0;
         position: fixed;
@@ -19,7 +23,6 @@
           width: 20px;
         height: 20px;
         background-color: transparent;
-          background-image: url('assets/img/back.svg');
           cursor: pointer;
     }
 
@@ -38,7 +41,6 @@
         background-color: #fff;
           width: 20px;
         height: 20px;
-          background-image: url('assets/img/forward.svg');
           cursor: pointer;
           background-color: transparent;
     }
@@ -50,7 +52,6 @@
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-        background-color: #fff;
         /* The border and text will still be displayed. If you don't want to display them, use the following properties */
         border: none;
         color: transparent;
@@ -59,13 +60,10 @@
         margin: 15px;
       }
       .menu-button.back {
-        left: 0;
-          background-image: url('assets/img/grid.svg');
-      
+        left: 0;      
       }
       .menu-button.toc {
         right:0;
-        background-image: url('assets/img/list.svg');
       
       }
       .delete-icon {

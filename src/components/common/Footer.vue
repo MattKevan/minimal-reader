@@ -1,5 +1,5 @@
 <template>
-<footer class="mt-auto w-full py-6 px-4 sm:px-6 lg:px-8 mx-auto mt-6">
+<footer class="m-auto w-full py-3 px-4 sm:px-6 lg:px-6 mx-auto mt-6">
   <!-- Grid -->
   <div class="flex justify-between items-center gap-5">
     
@@ -17,7 +17,7 @@
     <div class=" space-x-2">
 
         <div>
-      <a class="flex-none " href="https://www.kevan.tv" aria-label="Brand"><img src="../../assets/img/kevan.svg" class="w-[40px]"></a>
+      <a class="flex-none " href="https://www.kevan.tv" aria-label="Brand"><div class="w-[40px] h-[22px] bg-[url('assets/img/kevan.svg')] dark:bg-[url('assets/img/kevan-white.svg')]"></div></a>
     </div>
     
     </div>

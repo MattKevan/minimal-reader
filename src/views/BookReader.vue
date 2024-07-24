@@ -1,17 +1,17 @@
 <template>
   <div class="">
     <div class="">
-      <button @click="goHome" class="menu-button back">Home</button>
-      <button class="menu-button toc" data-hs-overlay="#hs-overlay-right">Contents</button>    
+      <button @click="goHome" class="menu-button back bg-[url('assets/img/grid.svg')] dark:bg-[url('assets/img/grid-white.svg')]">Home</button>
+      <button class="menu-button toc bg-[url('assets/img/list.svg')] dark:bg-[url('assets/img/list-white.svg')]" data-hs-overlay="#hs-overlay-right">Contents</button>    
     </div>
 
-    <div id="book-title" class="text-2xl font-bold text-center py-4"></div>
+    <div id="book-title" class="font-bold text-center py-4"></div>
     <div id="viewer" class="scrolled max-w-4xl ml-auto mr-auto"  :class="{ 'hidden': isResizing }"></div>
     <div v-if="isResizing" class="spinner"></div>
 
     <div class="">
-      <button id="prev" @click="goPrev" class="">Previous</button>
-      <button id="next" @click="goNext" class="">Next</button>
+      <button id="prev" @click="goPrev" class="bg-[url('assets/img/back.svg')] dark:bg-[url('assets/img/back-white.svg')]">Previous</button>
+      <button id="next" @click="goNext" class="bg-[url('assets/img/forward.svg')] dark:bg-[url('assets/img/forward-white.svg')]">Next</button>
     </div>
 
 </div>
@@ -39,19 +39,16 @@
       </div>
     </div>
   
-    <AppFooter />
 
 </template>
 
 <script>
 import ePub from 'epubjs'
 import localforage from 'localforage'
-import AppFooter from '@/components/common/Footer.vue'
 
 export default {
   name: 'BookReader',
   components: {
-    AppFooter
   },
   props: {
     fileName: {
@@ -74,7 +71,9 @@ export default {
       try {
         const bookData = await localforage.getItem(this.fileName);
         if (bookData) {
-          this.book = ePub(bookData); 
+          this.book = ePub(bookData);
+
+        
 
           this.rendition = this.book.renderTo("viewer", {
             flow: "scrolled-doc",
@@ -87,11 +86,16 @@ export default {
           this.defineHooks();
           await this.loadTOC();
           await this.displayBook();
+
+          // Set the book title
+          document.getElementById('book-title').textContent = await this.book.loaded.metadata.then(metadata => metadata.title);
         } else {
-          alert('Book not found');
+          console.error('Book not found in local storage');
+          this.$router.push({ name: 'Home' });
         }
       } catch (error) {
         console.error('Error loading book:', error);
+        this.$router.push({ name: 'Home' });
       }
     },
     
@@ -114,29 +118,24 @@ export default {
         Array.from(head.querySelectorAll('link[rel="stylesheet"], style'))
           .forEach(el => el.remove());
 
-        const links = doc.querySelectorAll('a');
+          // Modify links
+          const links = doc.querySelectorAll('a');
         links.forEach(link => {
           const href = link.getAttribute('href');
           if (href) {
-            const currentLocation = this.rendition.currentLocation();
-            const currentChapter = currentLocation.start.href;
-            const currentChapterDirectory = currentChapter.substring(0, currentChapter.lastIndexOf('/') + 1);
-            
-            let absoluteHref;
-            if (href.startsWith('#')) {
-              // Internal anchor link within the same chapter
-              absoluteHref = currentChapter + href;
-            } else if (href.startsWith('http://') || href.startsWith('https://')) {
-              // External link, no need to modify
-              absoluteHref = href;
+            if (href.startsWith('http://') || href.startsWith('https://')) {
+              // External link: open in new tab
+              link.setAttribute('target', '_blank');
             } else {
-              // Relative link to another chapter
-              absoluteHref = currentChapterDirectory + href;
+              // Internal link: remove href and make it non-clickable
+              link.removeAttribute('href');
+              link.style.textDecoration = 'none';
+              link.style.color = 'inherit';
+              link.style.cursor = 'text';
             }
-            
-            link.setAttribute('href', absoluteHref);
           }
         });
+
 
         // Inject minimal Tailwind styles
         let style = doc.createElement('style');
@@ -182,6 +181,20 @@ export default {
       return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
     },
 
+    handleInternalLink(href) {
+      if (href.startsWith('#')) {
+        // It's an anchor within the current chapter
+        this.rendition.display(href);
+      } else {
+        // It's a link to another chapter
+        const item = this.book.spine.get(href);
+        if (item) {
+          this.rendition.display(item.href);
+        } else {
+          console.error(`Unable to find item for href: ${href}`);
+        }
+      }
+    },
 
     getMinimalTailwindStyles() {
       return `
@@ -239,9 +252,18 @@ export default {
       }
     },
 
+    saveCurrentLocation() {
+      if (this.rendition) {
+        const currentLocation = this.rendition.currentLocation();
+        if (currentLocation && currentLocation.start) {
+          localStorage.setItem(`epub-location-${this.fileName}`, currentLocation.start.cfi);
+        }
+      }
+    },
+
     displayChapter(href) {
       if (this.rendition) {
-        this.closeSidebar();
+        this.closeSidebar();  
         this.rendition.display(href);
       }
     },
@@ -290,12 +312,26 @@ export default {
   mounted() {
     window.addEventListener('keydown', this.handleKeydown);
     window.addEventListener('resize', this.handleResize);
+    window.addEventListener('beforeunload', this.saveCurrentLocation);
+
+    if (!this.fileName) {
+      const savedFileName = localStorage.getItem('currentBook');
+      if (savedFileName) {
+        this.$router.replace({ name: 'BookReader', params: { fileName: savedFileName } });
+      } else {
+        this.$router.push({ name: 'Home' });
+      }
+    } else {
+      localStorage.setItem('currentBook', this.fileName);
+      this.loadBook();
+    }
 
   },
 
   beforeUnmount() {
     window.removeEventListener('keydown', this.handleKeydown);
     window.removeEventListener('resize', this.handleResize);
+    window.removeEventListener('beforeunload', this.saveCurrentLocation);
 
   },
 };

@@ -1,5 +1,5 @@
 <template>
-    <header class=" sticky top-0 z-[3000] w-full bg-white/90  backdrop-blur-md text-sm py-5   dark:bg-black/90">
+    <header class=" sticky top-0 z-[3000] w-full bg-white/90  backdrop-blur-md text-sm py-5   dark:bg-black/80">
     <nav class="flex items-center justify-between px-5" aria-label="Global">
       <div class="flex items-center gap-4">
 
@@ -21,11 +21,11 @@
     </div>
 
     <div id="viewer" class="scrolled max-w-4xl ml-auto mr-auto mb-20"  :class="{ 'hidden': isResizing }"></div>
-    <div @click="goPrev" class="text-transparent fixed top-0 left-0 h-screen w-12 bg-transparent shadow-lg flex flex-col hover:cursor-pointer bg-[url('assets/img/back.svg')] dark:bg-[url('assets/img/back-white.svg')] bg-no-repeat bg-center">
+    <div @click="goPrev" class="text-transparent fixed top-0 left-0 h-screen w-12 lg:w-20 bg-transparent shadow-lg flex flex-col hover:cursor-pointer bg-[url('assets/img/back.svg')] dark:bg-[url('assets/img/back-white.svg')] bg-no-repeat bg-[center_left_10px]">
       Prev
     </div>
 
-    <div @click="goNext" class="text-transparent fixed top-0 right-0 h-screen w-12 bg-transparent shadow-lg flex flex-col hover:cursor-pointer bg-[url('assets/img/forward.svg')] dark:bg-[url('assets/img/forward-white.svg')] bg-no-repeat bg-center">
+    <div @click="goNext" class="text-transparent fixed top-0 right-0 h-screen w-12 lg:w-20 bg-transparent shadow-lg flex flex-col hover:cursor-pointer bg-[url('assets/img/forward.svg')] dark:bg-[url('assets/img/forward-white.svg')] bg-no-repeat bg-[center_right_10px]">
       Next
     </div>
  
@@ -102,7 +102,10 @@ export default {
           await this.displayBook();
 
           // Set the book title
-          document.getElementById('book-title').textContent = await this.book.loaded.metadata.then(metadata => metadata.title);
+          const metadata = await this.book.loaded.metadata;
+          const fullTitle = metadata.title;
+          const truncatedTitle = fullTitle.split(':')[0].trim();
+          document.getElementById('book-title').textContent = truncatedTitle;
         } else {
           console.error('Book not found in local storage or invalid book data');
           this.$router.push({ name: 'Home' });

@@ -1,6 +1,6 @@
 <!-- Header.vue -->
 <template>
-  <header class="flex sticky top-0 justify-start flex-nowrap z-50 w-full bg-white  text-sm py-3 sm:py-0 dark:bg-black ">
+  <header class="flex sticky top-0 justify-start flex-nowrap z-50 w-full bg-white/90  backdrop-blur-md text-sm py-3 sm:py-0 dark:bg-black ">
     <nav class="relative w-full px-4 items-center justify-between sm:px-6" aria-label="Global">
       <div class="flex items-center justify-between">
         <h1><a class="text-xl font-semibold" href="#" aria-label="Brand">Minimal Reader</a></h1>

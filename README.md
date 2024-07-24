@@ -1,25 +1,22 @@
 # Minimal reader
 
-![Minimal Reader screenshot](https://www.minimalreader.xyz/img/screenshot.png)
+![Minimal Reader screenshot](https://www.minimalreader.xyz/screenshot.png)
 
-A browser-based Epub reader with an emphasis on a clean reading experience. 
+A browser-based ebook reader with an emphasis on a clean reading experience. 
 
 ## Features
 
-* Reasonable typography – like a reader mode for ebooks.
+* Decent typography – like a reader mode for ebooks.
 * Remembers your last location in the book.
-* Private – your books and reading history are stored locally in your browser cache.
-* Dark mode
+* Private – your books and reading history are stored locally in your browser cache, no other tracking.
+* Optimised for mobile.
+* Dark mode.
 
-
-Todo:
-* ~~Add option to delete books from library~~
-* Add option to save bookmarks
-* Clean up code
-
-Limitations:
+**Limitations:**
 * Only works with DRM-free epubs.
 * Doesn't work well with ebooks where every page is an image.
+
+Built with Vue and epub.js.
 
 ## Project setup
 ```

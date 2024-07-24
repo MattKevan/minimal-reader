@@ -8,8 +8,7 @@
 
         <div v-if="books.length === 0" @click="triggerUpload" class="pt-6">
           <p class="text-xl font-semibold mb-2">Your library is empty.</p>
-          <p class="mb-3">Drop a DRM-free Epub here or click 'Add books' to get started. Press left and right arrow keys to turn pages and esc to return home.</p>
-          <p>Your books and reading history are stored privately in your browser, no data is collected or shared.</p>
+          <p class="mb-3">Drop a DRM-free Epub here or click 'Add books' to get started.</p>
                 
               </div>
         

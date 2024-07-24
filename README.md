@@ -1,6 +1,8 @@
 # Minimal reader
 
-This is a simple browser-based epub reader with an emphasis on creating a clean reading experience. 
+![Minimal Reader screenshot](https://www.minimalreader.xyz/img/screenshot.png)
+
+A browser-based Epub reader with an emphasis on a clean reading experience. 
 
 ## Features
 

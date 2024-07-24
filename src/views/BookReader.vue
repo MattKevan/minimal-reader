@@ -6,8 +6,7 @@
     </div>
 
     <div id="book-title" class="font-bold text-center py-4"></div>
-    <div id="viewer" class="scrolled max-w-4xl ml-auto mr-auto"  :class="{ 'hidden': isResizing }"></div>
-    <div v-if="isResizing" class="spinner"></div>
+    <div id="viewer" class="scrolled max-w-4xl ml-auto mr-auto mb-20"  :class="{ 'hidden': isResizing }"></div>
 
     <div class="">
       <button id="prev" @click="goPrev" class="bg-[url('assets/img/back.svg')] dark:bg-[url('assets/img/back-white.svg')]">Previous</button>
@@ -69,11 +68,9 @@ export default {
   methods: {
     async loadBook() {
       try {
-        const bookData = await localforage.getItem(this.fileName);
-        if (bookData) {
-          this.book = ePub(bookData);
-
-        
+        const bookItem = await localforage.getItem(this.fileName);
+        if (bookItem && bookItem.data) {
+          this.book = ePub(bookItem.data);
 
           this.rendition = this.book.renderTo("viewer", {
             flow: "scrolled-doc",
@@ -90,7 +87,7 @@ export default {
           // Set the book title
           document.getElementById('book-title').textContent = await this.book.loaded.metadata.then(metadata => metadata.title);
         } else {
-          console.error('Book not found in local storage');
+          console.error('Book not found in local storage or invalid book data');
           this.$router.push({ name: 'Home' });
         }
       } catch (error) {

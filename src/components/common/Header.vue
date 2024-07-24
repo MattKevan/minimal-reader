@@ -1,7 +1,7 @@
 <!-- Header.vue -->
 <template>
   <header class="flex justify-start flex-nowrap z-50 w-full bg-white border-b border-gray-200 text-sm py-3 sm:py-0 dark:bg-black dark:border-neutral-700">
-    <nav class="relative w-full px-4 items-center justify-between sm:px-6 lg:px-8" aria-label="Global">
+    <nav class="relative w-full px-4 items-center justify-between sm:px-6" aria-label="Global">
       <div class="flex items-center justify-between">
         <a class="text-xl font-semibold" href="#" aria-label="Brand">Minimal Reader</a>
         <div @click="triggerUpload" style="cursor: pointer;" class="upload-button flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600 py-2 sm:py-0 sm:ms-4 sm:my-6 sm:ps-6 dark:border-neutral-700 dark:text-neutral-400 dark:hover:text-blue-500">

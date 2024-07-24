@@ -5,7 +5,7 @@
 @layer components {
 
     body {
-      @apply bg-white dark:bg-black text-black dark:text-gray-300;
+      @apply bg-white dark:bg-black text-black dark:text-gray-200;
     }
     #prev {
         left: 0;

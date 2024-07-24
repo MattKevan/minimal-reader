@@ -3,22 +3,36 @@
     <AppHeader @upload-books="uploadBooks" />
 
     <div class="drop flex-grow" @dragover.prevent @drop="uploadBooks">
-      <div class="content w-full px-4 sm:px-6">
-        <h1 class="md:my-12 my-8 text-4xl md:text-5xl font-bold">Library</h1>
-        <div v-if="books.length === 0" class="placeholder">
-          <p class="text-xl mb-2"><strong>Your library is empty.</strong></p>
-          <p>Add DRM-free Epubs by dropping them on this window or by clicking the plus icon above.</p>
-          <p class="xs">Books are stored in your browser's cache, so clearing your browsing data will also empty your library.</p>
-        </div>
+      <div class="content w-full px-4  sm:px-6">
+
+        
         
         <div id="bookCatalog" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
-          <BookThumbnail
-            v-for="(book, index) in books"
-            :key="index"
-            :book="book"
-            @open-book="openBook"
-            @delete-book="deleteBook"
-          />
+
+
+
+            <BookThumbnail
+              v-for="(book, index) in books"
+              :key="index"
+              :book="book"
+              @open-book="openBook"
+              @delete-book="deleteBook"
+            />
+            <div class="book-item group overflow-hidden relative hover:cursor-pointer transition rounded-r-lg  hover:bg-black/10 dark:hover:bg-gray-900 duration-200 border-dashed border-2 border-gray-300 dark:border-gray-700">
+
+            <div @click="triggerUpload" class="default-cover w-full aspect-[3/4.5] rounded-r-lg flex flex-col overflow-hidden items-center font-medium text-lg ">
+            <input type="file" @change="handleFileChange" id="bookInput" multiple style="display: none" />
+            <div class="flex flex-col items-center m-auto">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-12">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+            <p class="text-xs text-gray-600 dark:text-gray-500">Add books</p>
+           
+          </div>
+            </div>
+          </div>
+          
+
         </div>
       </div>
     </div>
@@ -57,6 +71,12 @@ export default {
     }
   },
   methods: {
+    triggerUpload() {
+      document.getElementById('bookInput').click();
+    },
+    handleFileChange(event) {
+      this.$emit('upload-books', event);
+    },
     getRandomColor() {
       return this.colors[Math.floor(Math.random() * this.colors.length)];
     },
